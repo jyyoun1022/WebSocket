@@ -1,6 +1,5 @@
 package org.codej.websocket.handler;
 
-import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
@@ -19,16 +18,23 @@ public class ChatHandler extends TextWebSocketHandler {
 
     @Override
     public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws Exception {
-      message.getPayload();
-    }
+        String payload = (String) message.getPayload();
+        log.info("payload : "+payload);
 
+        for (WebSocketSession sess : list) {
+            sess.sendMessage(message);
+        }
+    }
+    /** Client가 접속 시 호출되는 메서드*/
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-        super.afterConnectionEstablished(session);
+        list.add(session);
+        log.info(session + " 클라이언트 접속");
     }
-
+    /** client가 접속 시 호출되는 메서드*/
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-        super.afterConnectionClosed(session, status);
+        log.info(session + " 클라이언트 접속 해제");
+        list.remove(session);
     }
 }
