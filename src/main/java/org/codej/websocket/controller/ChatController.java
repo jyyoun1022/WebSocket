@@ -1,18 +1,31 @@
 package org.codej.websocket.controller;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.codej.websocket.domain.ChatRoom;
+import org.codej.websocket.service.ChatService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+
+@RestController
 @Slf4j
+@RequiredArgsConstructor
+@RequestMapping("/chat")
 public class ChatController {
 
-    @GetMapping("/chat")
-    public String chatGet(){
+    private final ChatService service;
 
-        log.info("@ChatController, chat GET()");
+    @PostMapping
+    public ChatRoom createRoom(@RequestParam String name){
 
-        return "chat";
+        return service.createRoom(name);
+    }
+
+    @GetMapping
+    public List<ChatRoom> findAllRooms(){
+        return service.findAllRoom();
     }
 }
