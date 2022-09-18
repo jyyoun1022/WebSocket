@@ -27,7 +27,7 @@ public class ChatRoomController {
         model.addAttribute("list",repository.findAllRoom());
         log.info("Show All CharList : {}",repository.findAllRoom());
 
-        return "roomList";
+        return "chat/roomList";
     }
 
     // 채팅방 생성 (리스트로 리다이렉트)
@@ -51,6 +51,6 @@ public class ChatRoomController {
         log.info("roomId : {}",roomId);
         model.addAttribute("room",repository.findByRoomId(roomId));
 
-        return "chatroom";
+        return "chat/chatroom";
     }
 }

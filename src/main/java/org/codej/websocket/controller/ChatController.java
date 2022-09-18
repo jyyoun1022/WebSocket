@@ -7,7 +7,6 @@ import org.apache.logging.log4j.message.SimpleMessage;
 import org.codej.websocket.domain.ChatDto;
 import org.codej.websocket.domain.ChatRoom;
 import org.codej.websocket.repository.ChatRepository;
-import org.codej.websocket.service.ChatService;
 import org.springframework.context.event.EventListener;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;

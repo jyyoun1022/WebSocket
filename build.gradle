@@ -24,6 +24,8 @@ dependencies {
 //	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.webjars.bower:bootstrap:4.3.1'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//	JSON
+	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 	//websocket
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
 	//sockjs
